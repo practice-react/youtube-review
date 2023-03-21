@@ -15,8 +15,7 @@ const router = createBrowserRouter([
     errorElement: <Notfound />,
     children: [
       {
-        root: true,
-        path: '/',
+        index: true,
         element: <Videos />,
       },
       {
