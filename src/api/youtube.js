@@ -1,26 +1,40 @@
-import axios from 'axios';
-
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=bts&key={{key}}
+//https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key={{key}}
 
 export default class Youtube {
-  // constructor() {
-  //   this.httpClient = axios.create({
-  //     baseURL: 'https://youtube.googleapis.com/youtube/v3/',
-  //     params: { key: REACT_APP_YOUTUBE_KEY },
-  //   });
-  // }
+  constructor(client) {
+    this.client = client;
+  }
 
   search(keyword) {
     return keyword ? this.#searchVideos(keyword) : this.#mostPopular();
   }
 
   #searchVideos(keyword) {
-    return axios.get(`/videos/search.json`).then(({ data }) => {
-      return data.items.map((item) => ({ ...item, id: item.id.videoId }));
-    });
+    return this.client
+      .search({
+        params: {
+          part: 'snippet',
+          maxResults: '25',
+          q: keyword,
+        },
+      })
+      .then(({ data }) =>
+        data.items.map((item) => ({ ...item, id: item.id.videoId }))
+      );
   }
 
+  //part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key={{key}}
+
   #mostPopular() {
-    return axios.get('/videos/popular.json').then(({ data }) => data.items);
+    return this.client
+      .mostPopular({
+        params: {
+          part: 'snippet',
+          chart: 'mostpopular',
+          maxResults: 25,
+        },
+      })
+      .then(({ data }) => data.items);
   }
 }
