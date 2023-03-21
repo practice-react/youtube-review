@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:6.9.0"],\
             ["react-scripts", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:5.0.1"],\
             ["tailwindcss", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:3.2.7"],\
+            ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -16939,6 +16940,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["uuid", "npm:8.3.2"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/uuid-npm-9.0.0-46c41e3e43-8dd2c83c43.zip/node_modules/uuid/",\
+          "packageDependencies": [\
+            ["uuid", "npm:9.0.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["v8-to-istanbul", [\
@@ -17808,6 +17816,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:6.9.0"],\
             ["react-scripts", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:5.0.1"],\
             ["tailwindcss", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:3.2.7"],\
+            ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\

@@ -2,7 +2,7 @@ import React from 'react';
 import dateConversion from '../util/data';
 
 export default function VideoCard({ video }) {
-  const { thumbnails, title, description, channelTitle, publishedAt } = video;
+  const { thumbnails, title, description, publishedAt } = video;
 
   return (
     <div className=''>
