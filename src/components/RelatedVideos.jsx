@@ -11,6 +11,7 @@ export default function RelatedVideos({ id }) {
   });
 
   if (isLoading) return <div>...Loading</div>;
+  console.log(videos);
   return (
     <ul>
       {videos.map(({ snippet, id }) => (

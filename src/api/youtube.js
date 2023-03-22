@@ -26,11 +26,12 @@ export default class Youtube {
 
   relatedVideos(id) {
     return this.client
-      .reletedVideos(id, {
+      .relatedVideos({
         params: {
           part: 'snippet',
-          relatedToVideoId: id,
+          maxResults: 25,
           type: 'video',
+          relatedToVideoId: id,
         },
       })
       .then((res) =>

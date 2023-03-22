@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelProfile from '../components/ChannelProfile';
 import RelatedVideos from '../components/RelatedVideos';
-import formatAgo from '../util/date';
 
 export default function VideoDetail() {
   const {
