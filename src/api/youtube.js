@@ -45,7 +45,7 @@ export default class Youtube {
     return this.client
       .comments({
         params: {
-          part: 'snippent',
+          part: 'snippet',
           videoId: id,
           maxResults: 25,
         },
