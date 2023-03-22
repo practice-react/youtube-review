@@ -12,4 +12,8 @@ export default class FakeYoutube {
   channels() {
     return axios.get('/videos/channel.json');
   }
+
+  reletedVideos() {
+    return axios.get('/videos/related.json');
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelProfile from '../components/ChannelProfile';
+import RelatedVideos from '../components/RelatedVideos';
 import formatAgo from '../util/date';
 
 export default function VideoDetail() {
@@ -28,7 +29,7 @@ export default function VideoDetail() {
           allow='accelerometer; autoplay; clipboard-write; 
     encrypted-media; gyroscope; picture-in-picture'
         ></iframe>
-        <article className='p-4 mb-10'>
+        <div className='p-4 mb-10'>
           <h2 className='text-2xl'>{title}</h2>
           <ChannelProfile channelId={channelId} title={channelTitle} />
           <div
@@ -44,7 +45,7 @@ export default function VideoDetail() {
             </time>
             <p className='w-72'>{description}</p>
             {!isOpened ? (
-              <button className='absolute left-60 top-12 font-bold'>
+              <button className='absolute left-80 top-12 font-bold'>
                 더보기
               </button>
             ) : (
@@ -53,9 +54,11 @@ export default function VideoDetail() {
               </button>
             )}
           </div>
-        </article>
+        </div>
       </section>
-      <article className='basis-2/6'></article>
+      <article className='basis-2/6'>
+        <RelatedVideos id={id} />
+      </article>
     </section>
   );
 }
