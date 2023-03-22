@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:6.9.0"],\
             ["react-scripts", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:5.0.1"],\
             ["tailwindcss", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:3.2.7"],\
+            ["timeago.js", "npm:4.0.2"],\
             ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
@@ -16490,6 +16491,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["timeago.js", [\
+        ["npm:4.0.2", {\
+          "packageLocation": "./.yarn/cache/timeago.js-npm-4.0.2-e87d64f9a3-c785a06988.zip/node_modules/timeago.js/",\
+          "packageDependencies": [\
+            ["timeago.js", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["tmpl", [\
         ["npm:1.0.5", {\
           "packageLocation": "./.yarn/cache/tmpl-npm-1.0.5-d399ba37e2-cd922d9b85.zip/node_modules/tmpl/",\
@@ -17816,6 +17826,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:6.9.0"],\
             ["react-scripts", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:5.0.1"],\
             ["tailwindcss", "virtual:5dd6c68db870291b53dcb9739fde4395bbcfc72637be69bf628c278fc79489446241db8099842c0d449c370813d797fe3cbf85f01c91c7582e1fa50f897dce3e#npm:3.2.7"],\
+            ["timeago.js", "npm:4.0.2"],\
             ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\

@@ -18,12 +18,16 @@ export default function Videos() {
   );
 
   if (isLoading) return <div>...Loading</div>;
-  console.log(videos);
+
   return (
     <main>
-      <ul className='grid gap-2 mt-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+      <ul className='grid gap-3 mt-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         {videos.map((videoData) => (
-          <VideoCard key={uuidv4()} video={videoData.snippet} />
+          <VideoCard
+            key={uuidv4()}
+            video={videoData.snippet}
+            id={videoData.id}
+          />
         ))}
       </ul>
     </main>

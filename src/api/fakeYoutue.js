@@ -8,4 +8,15 @@ export default class FakeYoutube {
   mostPopular() {
     return axios.get('/videos/popular.json');
   }
+
+  channels() {
+    return axios.get('/videos/channel.json');
+  }
+
+  relatedVideos() {
+    return axios.get('/videos/related.json');
+  }
+  comments() {
+    return axios.get('/videos/comments.json');
+  }
 }
