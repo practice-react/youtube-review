@@ -5,7 +5,7 @@ import SearchVideos from './SearchVideos';
 
 export default function Header() {
   return (
-    <header className='flex items-center w-full gap-8 px-8 py-4 bg-black'>
+    <header className='flex items-center w-full gap-8 px-8 py-4 bg-black fixed top-0 z-50'>
       <Link to='/'>
         <div className='flex w-full items-center gap-3 text-3xl basis-2/6'>
           <BsYoutube className='text-youtube' />
