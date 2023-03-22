@@ -10,6 +10,17 @@ export default class Youtube {
     return keyword ? this.#searchVideos(keyword) : this.#mostPopular();
   }
 
+  channelsImgURL(id) {
+    return this.client
+      .channels({
+        params: {
+          part: 'snippet',
+          id,
+        },
+      })
+      .then((res) => res.data.items[0].snippet.thumbnails.high.url);
+  }
+
   #searchVideos(keyword) {
     return this.client
       .search({
