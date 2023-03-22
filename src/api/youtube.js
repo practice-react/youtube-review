@@ -39,6 +39,22 @@ export default class Youtube {
       );
   }
 
+  // https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=yTL_-OR-etM
+
+  comments(id) {
+    return this.client
+      .comments({
+        params: {
+          part: 'snippent',
+          videoId: id,
+          maxResults: 25,
+        },
+      })
+      .then((res) =>
+        res.data.items.map((item) => item.snippet.topLevelComment.snippet)
+      );
+  }
+
   #searchVideos(keyword) {
     return this.client
       .search({

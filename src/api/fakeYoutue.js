@@ -16,4 +16,7 @@ export default class FakeYoutube {
   relatedVideos() {
     return axios.get('/videos/related.json');
   }
+  comments() {
+    return axios.get('/videos/comments.json');
+  }
 }
