@@ -6,9 +6,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function RelatedVideos({ id }) {
   const { youtube } = useYoutubeContext();
-  const { data: videos, isLoading } = useQuery(['releted', id], () => {
-    return youtube.relatedVideos(id);
-  });
+  const { data: videos, isLoading } = useQuery(
+    ['releted', id],
+    () => {
+      return youtube.relatedVideos(id);
+    },
+    { staleTime: 1000 * 60 * 10 }
+  );
 
   if (isLoading) return <div>...Loading</div>;
 

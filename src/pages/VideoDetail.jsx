@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelProfile from '../components/ChannelProfile';
 import Comments from '../components/Comments';
@@ -65,7 +65,9 @@ export default function VideoDetail() {
           <RelatedVideos id={id} />
         </article>
         <section className='lg:float-left lg:w-4/6'>
-          <Comments id={id} />
+          <Suspense fallback={<div>...Loding</div>}>
+            <Comments id={id} />
+          </Suspense>
         </section>
       </section>
     </>
