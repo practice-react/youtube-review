@@ -5,14 +5,14 @@ import React, { useEffect, useRef } from 'react';
 // 받아온 데이터를 이용해 state를 변경하겠지.
 // 뭐가 더 좋을까?
 
-export default function Observer({ nextComments, token }) {
+export default function Observer({ nextPage, token }) {
   const observerRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && entry.intersectionRatio > 0) {
-          nextComments(token);
+          nextPage(token);
         }
       });
     });

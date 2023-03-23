@@ -7,8 +7,10 @@ export default class Youtube {
     this.client = client;
   }
 
-  search(keyword) {
-    return keyword ? this.#searchVideos(keyword) : this.#mostPopular();
+  search(nextPageToken, keyword) {
+    return keyword
+      ? this.#searchVideos(nextPageToken, keyword)
+      : this.#mostPopular(nextPageToken);
   }
 
   channelsImgURL(id) {
@@ -59,31 +61,41 @@ export default class Youtube {
       }));
   }
 
-  #searchVideos(keyword) {
+  #searchVideos(nextPageToken, keyword) {
+    console.log(nextPageToken);
     return this.client
       .search({
         params: {
           part: 'snippet',
           maxResults: '25',
           q: keyword,
+          pageToken: nextPageToken,
         },
       })
-      .then(({ data }) =>
-        data.items.map((item) => ({ ...item, id: item.id.videoId }))
-      );
+      .then((res) => ({
+        videos: res.data.items.map((item) => ({
+          ...item,
+          id: item.id.videoId,
+        })),
+        nextPageToken: res.data.nextPageToken,
+      }));
   }
 
   //part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key={{key}}
 
-  #mostPopular() {
+  #mostPopular(nextPageToken) {
     return this.client
       .mostPopular({
         params: {
           part: 'snippet',
           chart: 'mostpopular',
           maxResults: 25,
+          pageToken: nextPageToken,
         },
       })
-      .then(({ data }) => data.items);
+      .then((res) => ({
+        videos: res.data.items,
+        nextPageToken: res.data.nextPageToken,
+      }));
   }
 }

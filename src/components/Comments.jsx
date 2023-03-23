@@ -13,7 +13,7 @@ export default function Comments({ id }) {
   // 동작이 발생했다. 사용자 입장에서는 commensts가 사라졌다 다시 나오니 scroll에 이상이 발생한듯 보인다.
   // 초기렌더링 시에만 fallback을 호출해야한다.
   // 해결: useDeferredValue를 사용하여 suspense의 fallback 재사용을 방지했다. useQuery의 키값으로 deferred를 저장하면,
-  // 재요청시 useDeferredValue 훅으로 인해 이전에 저장된 값을 사용하고 있다가. 모든 데이터 요청을 완료하면
+  // 재요청시 useDeferredValue 훅으로 인해 이전에 저장된 값(캐쉬)을 사용하고 있다가. 모든 데이터 요청을 완료하면
   // 리렌더링을 통해 새로운 값을 보여주게 된다.
   const deferredNextPageToken = useDeferredValue(nextPageToken);
   const { data } = useQuery(
@@ -66,7 +66,7 @@ export default function Comments({ id }) {
             </li>
           )
         )}
-      <Observer nextComments={setNextPageToken} token={data.nextPageToken} />
+      <Observer nextPage={setNextPageToken} token={data.nextPageToken} />
     </ul>
   );
 }
