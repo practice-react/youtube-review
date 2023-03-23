@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+## 트러블 슈팅
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 옵저버를 사용해 새로운 데이터 요청을 했다.
+- susepense의 기능을 사용했는데, useQuery가 새로운 데이터를 요청할때마다 callback이 호출 됐다.
+- 이는 사용자 경험에 매주 좋지 않아, 이전의 데이터가 보이는 상태에서 요청이 완료된다면 새로운 데이터를 렌더링 하고 싶었다.
+- 리액트 훅에는 useDeferredValue 훅이 존재한다. 이는 리액트 18버전에 나온 것으로 우선순위를 뒤로 미뤄
+- 메모리에 이전의 값을 저장해 두고, 이전의 값을 화면에 계속 보여주다가 새로운 값의 변경이 완료된다면 새로 렌더링을 하게 된다.
+- 이 훅을 사용하여 react Query의 키값을 useDeferredValue에 저장해 두고 query의 키값으로 사용했다.
+- 이제는 새로운 데이터의 요청이 있을때마다 fallback이 호출되는 문제는 발생하지 않았다.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+const [token, setToken] = useState('');
+const deferredToken = useDeferredValue(token);
+const { data } = useQuery(['videos', id, deferredToken], () => {
+  return fetch(
+    `https://www.youtube.com/videos?videoId=${id}&pageToken=${deferredToken}`
+  ).then((res) => res.json());
+});
+```
